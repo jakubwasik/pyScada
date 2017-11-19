@@ -25,20 +25,74 @@ except AttributeError:
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(800, 600)
+        MainWindow.resize(789, 638)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
-        self.progressBar = QtGui.QProgressBar(self.centralwidget)
-        self.progressBar.setGeometry(QtCore.QRect(120, 460, 561, 81))
+        self.gridLayout_3 = QtGui.QGridLayout(self.centralwidget)
+        self.gridLayout_3.setObjectName(_fromUtf8("gridLayout_3"))
+        self.tabWidget = QtGui.QTabWidget(self.centralwidget)
+        self.tabWidget.setMinimumSize(QtCore.QSize(771, 581))
+        self.tabWidget.setMaximumSize(QtCore.QSize(771, 581))
+        self.tabWidget.setObjectName(_fromUtf8("tabWidget"))
+        self.panel_operatora = QtGui.QWidget()
+        self.panel_operatora.setObjectName(_fromUtf8("panel_operatora"))
+        self.nivel_max_3 = QtGui.QFrame(self.panel_operatora)
+        self.nivel_max_3.setEnabled(False)
+        self.nivel_max_3.setGeometry(QtCore.QRect(590, 430, 10, 60))
+        self.nivel_max_3.setAutoFillBackground(False)
+        self.nivel_max_3.setStyleSheet(_fromUtf8("QFrame {\n"
+"border: 1px solid black;\n"
+"text-align: top;\n"
+"padding: 3px;\n"
+"border-bottom-right-radius: 10px;\n"
+"border-bottom-left-radius: 10px;\n"
+"border-top-right-radius: 10px;\n"
+"border-top-left-radius: 10px;\n"
+"\n"
+"background-color: red\n"
+"}"))
+        self.nivel_max_3.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.nivel_max_3.setFrameShadow(QtGui.QFrame.Raised)
+        self.nivel_max_3.setObjectName(_fromUtf8("nivel_max_3"))
+        self.nivel_max_2 = QtGui.QFrame(self.panel_operatora)
+        self.nivel_max_2.setGeometry(QtCore.QRect(620, 400, 16, 16))
+        self.nivel_max_2.setStyleSheet(_fromUtf8("border: 1px solid black;\n"
+"padding: 2px;\n"
+"background-color: #FFFAFA;\n"
+"\n"
+""))
+        self.nivel_max_2.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.nivel_max_2.setFrameShadow(QtGui.QFrame.Raised)
+        self.nivel_max_2.setObjectName(_fromUtf8("nivel_max_2"))
+        self.nivel_min_2 = QtGui.QFrame(self.panel_operatora)
+        self.nivel_min_2.setGeometry(QtCore.QRect(120, 400, 16, 16))
+        self.nivel_min_2.setStyleSheet(_fromUtf8("border: 1px solid black;\n"
+"padding: 2px;\n"
+"background-color: #FFFAFA;"))
+        self.nivel_min_2.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.nivel_min_2.setFrameShadow(QtGui.QFrame.Raised)
+        self.nivel_min_2.setObjectName(_fromUtf8("nivel_min_2"))
+        self.nivel_min_3 = QtGui.QFrame(self.panel_operatora)
+        self.nivel_min_3.setEnabled(True)
+        self.nivel_min_3.setGeometry(QtCore.QRect(190, 430, 10, 60))
+        self.nivel_min_3.setStyleSheet(_fromUtf8("border: 1px solid black;\n"
+"padding: 2px;\n"
+"background-color: red;"))
+        self.nivel_min_3.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.nivel_min_3.setFrameShadow(QtGui.QFrame.Raised)
+        self.nivel_min_3.setObjectName(_fromUtf8("nivel_min_3"))
+        self.progressBar = QtGui.QProgressBar(self.panel_operatora)
+        self.progressBar.setGeometry(QtCore.QRect(100, 430, 560, 60))
         self.progressBar.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.progressBar.setAutoFillBackground(False)
         self.progressBar.setStyleSheet(_fromUtf8("QProgressBar {\n"
 "border: 1px solid black;\n"
 "text-align: top;\n"
-"padding: 2px;\n"
-"border-bottom-right-radius: 30px;\n"
-"border-bottom-left-radius: 30px;\n"
-"border-top-right-radius: 30px;\n"
-"border-top-left-radius: 30px;\n"
+"padding: 3px;\n"
+"border-bottom-right-radius: 10px;\n"
+"border-bottom-left-radius: 10px;\n"
+"border-top-right-radius: 10px;\n"
+"border-top-left-radius: 10px;\n"
 "background: QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0,\n"
 "stop: 0 #fff,\n"
 "stop: 0.4999 #eee,\n"
@@ -53,10 +107,10 @@ class Ui_MainWindow(object):
 "stop: 0.4999 #46a,\n"
 "stop: 0.5 #45a,\n"
 "stop: 1 #238 );\n"
-"border-bottom-right-radius: 30px;\n"
-"border-bottom-left-radius: 30px;\n"
-"border-top-right-radius: 30px;\n"
-"border-top-left-radius: 30px;\n"
+"border-bottom-right-radius: 15px;\n"
+"border-bottom-left-radius: 15px;\n"
+"border-top-right-radius: 15px;\n"
+"border-top-left-radius: 15px;\n"
 "border: 1px solid black;\n"
 "}"))
         self.progressBar.setMinimum(0)
@@ -67,44 +121,30 @@ class Ui_MainWindow(object):
         self.progressBar.setInvertedAppearance(False)
         self.progressBar.setTextDirection(QtGui.QProgressBar.BottomToTop)
         self.progressBar.setObjectName(_fromUtf8("progressBar"))
-        self.nivel_min = QtGui.QFrame(self.centralwidget)
-        self.nivel_min.setGeometry(QtCore.QRect(170, 460, 16, 81))
-        self.nivel_min.setStyleSheet(_fromUtf8("border: 1px solid black;\n"
-"padding: 2px;\n"
-"background-color: #FFFAFA;"))
-        self.nivel_min.setFrameShape(QtGui.QFrame.StyledPanel)
-        self.nivel_min.setFrameShadow(QtGui.QFrame.Raised)
-        self.nivel_min.setObjectName(_fromUtf8("nivel_min"))
-        self.nivel_max = QtGui.QFrame(self.centralwidget)
-        self.nivel_max.setGeometry(QtCore.QRect(610, 460, 16, 81))
-        self.nivel_max.setStyleSheet(_fromUtf8("border: 1px solid black;\n"
-"padding: 2px;\n"
-"background-color: #FFFAFA;\n"
-"\n"
-""))
-        self.nivel_max.setFrameShape(QtGui.QFrame.StyledPanel)
-        self.nivel_max.setFrameShadow(QtGui.QFrame.Raised)
-        self.nivel_max.setObjectName(_fromUtf8("nivel_max"))
-        self.nivel_min_2 = QtGui.QFrame(self.centralwidget)
-        self.nivel_min_2.setGeometry(QtCore.QRect(170, 430, 16, 16))
-        self.nivel_min_2.setStyleSheet(_fromUtf8("border: 1px solid black;\n"
-"padding: 2px;\n"
-"background-color: #FFFAFA;"))
-        self.nivel_min_2.setFrameShape(QtGui.QFrame.StyledPanel)
-        self.nivel_min_2.setFrameShadow(QtGui.QFrame.Raised)
-        self.nivel_min_2.setObjectName(_fromUtf8("nivel_min_2"))
-        self.nivel_max_2 = QtGui.QFrame(self.centralwidget)
-        self.nivel_max_2.setGeometry(QtCore.QRect(610, 430, 16, 16))
-        self.nivel_max_2.setStyleSheet(_fromUtf8("border: 1px solid black;\n"
-"padding: 2px;\n"
-"background-color: #FFFAFA;\n"
-"\n"
-""))
-        self.nivel_max_2.setFrameShape(QtGui.QFrame.StyledPanel)
-        self.nivel_max_2.setFrameShadow(QtGui.QFrame.Raised)
-        self.nivel_max_2.setObjectName(_fromUtf8("nivel_max_2"))
-        self.groupBox = QtGui.QGroupBox(self.centralwidget)
-        self.groupBox.setGeometry(QtCore.QRect(500, 60, 201, 151))
+        self.groupBox_2 = QtGui.QGroupBox(self.panel_operatora)
+        self.groupBox_2.setGeometry(QtCore.QRect(500, 210, 211, 101))
+        self.groupBox_2.setObjectName(_fromUtf8("groupBox_2"))
+        self.horizontalLayoutWidget = QtGui.QWidget(self.groupBox_2)
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(19, 20, 161, 61))
+        self.horizontalLayoutWidget.setObjectName(_fromUtf8("horizontalLayoutWidget"))
+        self.horizontalLayout = QtGui.QHBoxLayout(self.horizontalLayoutWidget)
+        self.horizontalLayout.setContentsMargins(-1, -1, -1, 0)
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.lcdNumber = QtGui.QLCDNumber(self.horizontalLayoutWidget)
+        self.lcdNumber.setFrameShape(QtGui.QFrame.Box)
+        self.lcdNumber.setObjectName(_fromUtf8("lcdNumber"))
+        self.horizontalLayout.addWidget(self.lcdNumber)
+        self.label_4 = QtGui.QLabel(self.horizontalLayoutWidget)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        self.label_4.setFont(font)
+        self.label_4.setObjectName(_fromUtf8("label_4"))
+        self.horizontalLayout.addWidget(self.label_4)
+        self.groupBox = QtGui.QGroupBox(self.panel_operatora)
+        self.groupBox.setGeometry(QtCore.QRect(510, 30, 201, 151))
         self.groupBox.setObjectName(_fromUtf8("groupBox"))
         self.gridLayoutWidget = QtGui.QWidget(self.groupBox)
         self.gridLayoutWidget.setGeometry(QtCore.QRect(10, 30, 187, 121))
@@ -147,29 +187,29 @@ class Ui_MainWindow(object):
         self.sliderMax.setOrientation(QtCore.Qt.Horizontal)
         self.sliderMax.setObjectName(_fromUtf8("sliderMax"))
         self.gridLayout.addWidget(self.sliderMax, 2, 0, 1, 1)
-        self.groupBox_2 = QtGui.QGroupBox(self.centralwidget)
-        self.groupBox_2.setGeometry(QtCore.QRect(510, 270, 201, 71))
-        self.groupBox_2.setObjectName(_fromUtf8("groupBox_2"))
-        self.horizontalLayoutWidget = QtGui.QWidget(self.groupBox_2)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(10, 20, 160, 31))
-        self.horizontalLayoutWidget.setObjectName(_fromUtf8("horizontalLayoutWidget"))
-        self.horizontalLayout = QtGui.QHBoxLayout(self.horizontalLayoutWidget)
-        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
-        self.lcdNumber = QtGui.QLCDNumber(self.horizontalLayoutWidget)
-        self.lcdNumber.setObjectName(_fromUtf8("lcdNumber"))
-        self.horizontalLayout.addWidget(self.lcdNumber)
-        self.label_4 = QtGui.QLabel(self.horizontalLayoutWidget)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setWeight(50)
-        self.label_4.setFont(font)
-        self.label_4.setObjectName(_fromUtf8("label_4"))
-        self.horizontalLayout.addWidget(self.label_4)
+        self.progressBar.raise_()
+        self.nivel_max_3.raise_()
+        self.nivel_max_2.raise_()
+        self.nivel_min_2.raise_()
+        self.nivel_min_3.raise_()
+        self.groupBox_2.raise_()
+        self.groupBox.raise_()
+        self.tabWidget.addTab(self.panel_operatora, _fromUtf8(""))
+        self.plot = QtGui.QWidget()
+        self.plot.setObjectName(_fromUtf8("plot"))
+        self.tabWidget.addTab(self.plot, _fromUtf8(""))
+        self.log = QtGui.QWidget()
+        self.log.setObjectName(_fromUtf8("log"))
+        self.horizontalLayout_2 = QtGui.QHBoxLayout(self.log)
+        self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
+        self.listWidget = QtGui.QListWidget(self.log)
+        self.listWidget.setObjectName(_fromUtf8("listWidget"))
+        self.horizontalLayout_2.addWidget(self.listWidget)
+        self.tabWidget.addTab(self.log, _fromUtf8(""))
+        self.gridLayout_3.addWidget(self.tabWidget, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 789, 21))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(MainWindow)
@@ -177,17 +217,22 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        QtCore.QObject.connect(self.progressBar, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.lcdNumber.display)
+        self.tabWidget.setCurrentIndex(1)
         QtCore.QObject.connect(self.sliderMax, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.lcdMax.display)
         QtCore.QObject.connect(self.sliderMin, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.lcdMin.display)
+        QtCore.QObject.connect(self.progressBar, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.lcdNumber.display)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
+        self.progressBar.setFormat(_translate("MainWindow", "%p%", None))
+        self.groupBox_2.setTitle(_translate("MainWindow", "Położenie", None))
+        self.label_4.setText(_translate("MainWindow", "[m]", None))
         self.groupBox.setTitle(_translate("MainWindow", "Alarmy", None))
         self.label_2.setText(_translate("MainWindow", "Max", None))
         self.button_alarms.setText(_translate("MainWindow", "Potwierdź", None))
         self.label.setText(_translate("MainWindow", "Min", None))
-        self.groupBox_2.setTitle(_translate("MainWindow", "Volumen de liquido en el tanque", None))
-        self.label_4.setText(_translate("MainWindow", "Litros", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.panel_operatora), _translate("MainWindow", "Panel Operatorski", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.plot), _translate("MainWindow", "Wykres", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.log), _translate("MainWindow", "Log", None))
 
