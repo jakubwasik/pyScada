@@ -1,6 +1,6 @@
 import logging
 from PyQt4 import QtGui
-from PyQt4.QtCore import QThread, SIGNAL
+from PyQt4.QtCore import QThread, SIGNAL, QTimer
 import sys
 import PyScada
 import numpy as np
@@ -41,6 +41,8 @@ class QtHandler(logging.Handler):
         elif "DEBUG" in item.text():
             item.setTextColor(QtGui.QColor("blue"))
         self.widget.addItem(item)
+        if self.widget.count() > 100:
+            self.widget.clear()
 
 class simpleThread(QThread):
     def __init__(self, opc, logger):
@@ -48,6 +50,7 @@ class simpleThread(QThread):
         self.opc= opc
         self.logger = logger
         self.running = True
+        self.response = 0
     def __del__(self):
         print "in thread closing opc"
         #self.opc.close()
@@ -64,10 +67,12 @@ class simpleThread(QThread):
                 data=data +1
             else:
                 data = data-1
-            response = self.opc.read('Bucket Brigade.Real8')
-            self.logger.debug("Message from OPC Server: value={0}, quality={1}, time={2}".format(*response))
-            self.emit(SIGNAL("update(int)"), data)
-            self.msleep(100)
+            responseTuple = self.opc.read('Bucket Brigade.Real8')
+            self.response=data
+            self.logger.debug("Message from OPC Server: value={0}, quality={1}, time={2}".format(*responseTuple))
+            #self.msleep(10)
+            #self.emit(SIGNAL("update(int)"), response[0])
+            #self.msleep(50)
 
 class CustomFigCanvas(FigureCanvas, TimedAnimation):
 
@@ -95,7 +100,7 @@ class CustomFigCanvas(FigureCanvas, TimedAnimation):
         self.ax1.set_ylim(0, 100)
 
         FigureCanvas.__init__(self, self.fig)
-        TimedAnimation.__init__(self, self.fig, interval = 50, blit = True)
+        TimedAnimation.__init__(self, self.fig, interval = 100, blit = True)
 
     def new_frame_seq(self):
         return iter(range(self.n.size))
@@ -165,6 +170,8 @@ class Scada(QtGui.QMainWindow, PyScada.Ui_MainWindow):
         self.connect(self.myThread, SIGNAL('update(int)'), self.update)
         self.connect(self.comboBox, SIGNAL('currentIndexChanged(QString)'), self.setLogLevel)
         self.connect(self.clearLogs, SIGNAL('clicked()'), self.clearScrollText)
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.update)
 
     def __del__(self):
         print "Disconnecting Server"
@@ -172,6 +179,7 @@ class Scada(QtGui.QMainWindow, PyScada.Ui_MainWindow):
 
     def connectToServer(self):
         self.myThread.start()
+        self.timer.start(100)
         response = ""
         for info in self.opc.info():
             response += "{0}:    {1}\n".format(*info)
@@ -186,6 +194,7 @@ class Scada(QtGui.QMainWindow, PyScada.Ui_MainWindow):
     def disconnectOPC(self):
         self.connectServer.setDisabled(False)
         self.disconnectServer.setDisabled(True)
+        self.timer.stop()
         self.myThread.running = False
         while self.myThread.isRunning():
             print "thread running, waiting for terminate"
@@ -214,7 +223,8 @@ class Scada(QtGui.QMainWindow, PyScada.Ui_MainWindow):
         print("zoom in")
         self.figure.zoomIn(5)
 
-    def update(self,liczba):
+    def update(self):
+        liczba = self.myThread.response
         self.figure.addData(liczba)
         if liczba < self.sliderMax.value():
             self.nivel_max_2.setStyleSheet("background-color: green;")
@@ -233,7 +243,8 @@ class Scada(QtGui.QMainWindow, PyScada.Ui_MainWindow):
             self.logger.warning("ALARM : Vehicle is under the min value")
         self.progressBar.setValue(int(liczba))
         self.progressBar.update()
-        self.listWidget.scrollToBottom()
+        if self.scroll.isChecked():
+            self.listWidget.scrollToBottom()
 
     def accustomMinBorder(self, value):
         postionStart=self.progressBar.geometry().getRect()[0]

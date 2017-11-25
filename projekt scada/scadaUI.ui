@@ -36,7 +36,7 @@
        <string notr="true">QWidget { background-color:rgb(235, 234, 255)}</string>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="panel_operatora">
        <attribute name="title">
@@ -217,7 +217,7 @@
          </rect>
         </property>
         <property name="title">
-         <string>GroupBox</string>
+         <string>Display</string>
         </property>
         <widget class="QProgressBar" name="progressBar">
          <property name="geometry">
@@ -392,12 +392,6 @@ background-color: #FFFAFA;
           <enum>QFrame::Raised</enum>
          </property>
         </widget>
-        <zorder>progressBar</zorder>
-        <zorder>nivel_min_3</zorder>
-        <zorder>nivel_min_3</zorder>
-        <zorder>nivel_max_3</zorder>
-        <zorder>nivel_min_2</zorder>
-        <zorder>nivel_max_2</zorder>
        </widget>
        <widget class="QGroupBox" name="groupBox_4">
         <property name="geometry">
@@ -530,11 +524,19 @@ background-color: #FFFAFA;
          </property>
         </item>
        </widget>
-       <zorder>listWidget</zorder>
-       <zorder>gridLayoutWidget_3</zorder>
-       <zorder>label_3</zorder>
-       <zorder>clearLogs</zorder>
-       <zorder>comboBox</zorder>
+       <widget class="QCheckBox" name="scroll">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>520</y>
+          <width>81</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>scroll</string>
+        </property>
+       </widget>
       </widget>
      </widget>
     </item>
