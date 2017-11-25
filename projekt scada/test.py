@@ -100,12 +100,12 @@ class CustomFigCanvas(FigureCanvas, TimedAnimation):
         self.n = np.linspace(0, self.xlim - 1, self.xlim)
         a = []
         b = []
-        a.append(2.0)
+        """ a.append(2.0)
         a.append(4.0)
         a.append(2.0)
         b.append(4.0)
         b.append(3.0)
-        b.append(4.0)
+        b.append(4.0)"""
         self.y = (self.n * 0.0) + 50
 
         # The window
@@ -132,10 +132,7 @@ class CustomFigCanvas(FigureCanvas, TimedAnimation):
     def new_frame_seq(self):
         return iter(range(self.n.size))
 
-    def _init_draw(self):
-        lines = [self.line1, self.line1_tail, self.line1_head]
-        for l in lines:
-            l.set_data([], [])
+
 
     def addData(self, value):
         self.addedData.append(value)
@@ -148,7 +145,7 @@ class CustomFigCanvas(FigureCanvas, TimedAnimation):
         self.ax1.set_ylim(bottom,top)
         self.draw()
 
-
+    """
     def _step(self, *args):
         # Extends the _step() method for the TimedAnimation class.
         try:
@@ -158,7 +155,7 @@ class CustomFigCanvas(FigureCanvas, TimedAnimation):
             print(str(self.abc))
             TimedAnimation._stop(self)
             pass
-
+    """
     def _draw_frame(self, framedata):
         margin = 2
         while(len(self.addedData) > 0):
