@@ -64,8 +64,8 @@ class simpleThread(QThread):
                 data=data +1
             else:
                 data = data-1
-           # response = self.opc.read('Bucket Brigade.Real8')
-          #  self.logger.debug("Message from OPC Server: value={0}, quality={1}, time={2}".format(*response))
+            response = self.opc.read('Bucket Brigade.Real8')
+            self.logger.debug("Message from OPC Server: value={0}, quality={1}, time={2}".format(*response))
             self.emit(SIGNAL("update(int)"), data)
             self.msleep(100)
 
@@ -232,9 +232,8 @@ class Scada(QtGui.QMainWindow, PyScada.Ui_MainWindow):
             self.nivel_min_3.setStyleSheet("background-color: red;")
             self.logger.warning("ALARM : Vehicle is under the min value")
         self.progressBar.setValue(int(liczba))
+        self.progressBar.update()
         self.listWidget.scrollToBottom()
-
-
 
     def accustomMinBorder(self, value):
         postionStart=self.progressBar.geometry().getRect()[0]
